@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="parkingApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body ng-controller="parkingcntrl">
+
+	<table >
+		<thead>
+			<tr>
+				<td>PLATE NUMBER</td>
+				<td>DElETE</td>
+			</tr>
+			</thead>
+			<tr ng-repeat="cars in car">
+				<td>{{$index}}</td>
+				<td>{{cars.plate}}</td>
+			</tr>
+			
+	</table>
+	<label >Enter Plate #</label>
+	<input type="text" ng-model="vehicle.plate">
+	<button ng-click="save(vehicle)">Save</button><br>
+	<h1>ngBind</h1>
+		<input type="text" ng-model="platenumber">
+		hello plate<span ng-bind="platenumber"></span>
+		<ul ng-repeat="cars in car">
+		<li ng-bind="cars.plate"></li>
+		</ul><br>
+    <h1>ngBindHtml</h1>
+		<p ng-bind-html="myHTML"></p>
+		<h1> ngDisable</h1>
+		<input type="checkbox"ng-model="checked">click check box</input><br>
+		<button ng-model="button" ng-disabled="checked">button</button>
+	<h1>ngif</h1>
+		  <table >
+           <tr ng-repeat="cars in car">
+           <td ng-if="$odd" style="background-color:yellow">{{cars.plate}}</td>
+           <td ng-if="$even">{{ cars.plate }}</td>
+          </tr>
+         </table>
+    <h1>ng-show,ng-hide</h1>
+       <p ng-show="13 > 12">ture-it will show "I'm visible"</p>
+       <p ng-hide="13 < 12">false-it will not hide "I'm visible"</p>
+    <h1>ngoptions,nginclude</h1>
+       <select ng-model="plate" ng-options="t.plate for t in car">
+       	<option value="blank">(blank)</option>
+      </select>
+       url of the car: <code>{{plate.url}}</code>
+  <hr/>
+	  <div >
+	    <div  ng-include="views/ex1.html"></div>
+	  </div>
+</div>
+
+		
+
+	
+	<script type="text/javascript" src="../bower_components/angular/angular.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.2/angular-sanitize.js"></script>
+	<script type="text/javascript" src="scripts/app.js"></script>
+	<script type="text/javascript" src="scripts/controllers.js"></script>
+</body>
+</html>
